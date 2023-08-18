@@ -16,8 +16,8 @@ contract SmartWalletWithGuardiansAndProposeNewOwner {
     mapping(address => bool) guardians;
     mapping(address => mapping(address => bool)) newxtGuardianVoteBool;
 
-    constructor(address _owner){
-        owner = payable(_owner);
+    constructor(){
+        owner = payable(msg.sender);
     }
 
     function getBalance() public view returns(uint) {
