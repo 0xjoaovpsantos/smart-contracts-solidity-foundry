@@ -16,6 +16,8 @@ contract SmartWalletWithGuardiansAndProposeNewOwner {
     mapping(address => bool) guardians;
     mapping(address => mapping(address => bool)) newxtGuardianVoteBool;
 
+    event AllowanceHistory(address _for, uint amount);
+
     constructor(){
         owner = payable(msg.sender);
     }
@@ -48,8 +50,6 @@ contract SmartWalletWithGuardiansAndProposeNewOwner {
     }
 
     function setAllowance(address _for, uint _amount) public {
-        console.log(owner);
-        console.log(msg.sender);
         require(msg.sender == owner, "You are not the owner, aborting");
         allowance[_for] = _amount;
 
@@ -58,6 +58,8 @@ contract SmartWalletWithGuardiansAndProposeNewOwner {
         }else{
             isAllowedToSend[_for] = false;
         }
+
+        emit AllowanceHistory(_for, _amount);
     }
 
     function transfer(address payable _to, uint _amount, bytes memory payload) payable public returns(bytes memory) {
