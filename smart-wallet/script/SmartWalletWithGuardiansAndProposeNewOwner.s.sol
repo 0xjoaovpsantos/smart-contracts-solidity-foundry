@@ -10,7 +10,7 @@ contract ScriptSmartWalletWithGuardians is Script {
 
     function run() public {
         vm.startBroadcast();
-        new SmartWalletWithGuardiansAndProposeNewOwner();
+        // new SmartWalletWithGuardiansAndProposeNewOwner();
         vm.stopBroadcast();
     }
 }

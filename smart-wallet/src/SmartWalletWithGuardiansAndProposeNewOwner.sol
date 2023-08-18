@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
+import 'forge-std/console.sol';
+
 contract SmartWalletWithGuardiansAndProposeNewOwner {
     address payable owner;
     address nextOwner;
@@ -14,8 +16,8 @@ contract SmartWalletWithGuardiansAndProposeNewOwner {
     mapping(address => bool) guardians;
     mapping(address => mapping(address => bool)) newxtGuardianVoteBool;
 
-    constructor(){
-        owner = payable(address(this));
+    constructor(address _owner){
+        owner = payable(_owner);
     }
 
     function getBalance() public view returns(uint) {
@@ -46,6 +48,8 @@ contract SmartWalletWithGuardiansAndProposeNewOwner {
     }
 
     function setAllowance(address _for, uint _amount) public {
+        console.log(owner);
+        console.log(msg.sender);
         require(msg.sender == owner, "You are not the owner, aborting");
         allowance[_for] = _amount;
 
