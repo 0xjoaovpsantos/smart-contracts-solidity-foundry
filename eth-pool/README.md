@@ -1,5 +1,18 @@
 ## Foundry
 
+forge create src/ETHPool.sol:ETHPool --private-key USER_ADDRESS
+
+cast send CONTRACT_ADDRESS "stake()" --value 100 --private-key USER_ADDRESS
+
+cast send CONTRACT_ADDRESS "stake()" --value 300 --private-key USER_ADDRESS
+
+cast send CONTRACT_ADDRESS "depositRewards()" --value 200 --private-key USER_ADDRESS
+
+cast send CONTRACT_ADDRESS "withdraw()" --private-key USER_ADDRESS
+
+cast send CONTRACT_ADDRESS "calculateStakeAndRewards()" --private-key USER_ADDRESS
+
+
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
 Foundry consists of:
