@@ -7,3 +7,6 @@
 - **Deploy only one contract**:
   - forge create src/PathToContract:ContractName --private-key $PRIVATE_KEY --rpc-url $RPC_URL
 
+- **To run local testnet**:
+  - anvil
+
