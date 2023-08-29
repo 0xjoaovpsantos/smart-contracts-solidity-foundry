@@ -13,3 +13,6 @@
 [submodule "eth-pool/lib/forge-std"]
 	path = eth-pool/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "todo-blockchain/lib/forge-std"]
+	path = todo-blockchain/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
