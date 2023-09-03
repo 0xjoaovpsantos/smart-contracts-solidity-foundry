@@ -19,3 +19,6 @@
 [submodule "example-emit-events/lib/forge-std"]
 	path = example-emit-events/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "my-token/lib/forge-std"]
+	path = my-token/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
