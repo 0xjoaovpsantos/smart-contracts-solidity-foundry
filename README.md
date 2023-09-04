@@ -5,7 +5,16 @@
 ## 💡 Scripts
 
 - **Deploy only one contract**:
-  - forge create src/PathToContract:ContractName --private-key $PRIVATE_KEY --rpc-url $RPC_URL
+
+```bash
+forge create src/PathToContract:ContractName --private-key $PRIVATE_KEY --rpc-url $RPC_URL
+````
+
+- **To run local testnet**:
+  
+```bash
+anvil
+```
 
 - **Format code**:
   - forge fmt
