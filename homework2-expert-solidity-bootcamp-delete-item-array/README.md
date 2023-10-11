@@ -1,6 +1,29 @@
-## Foundry
+## Delete item form array
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+1. Write a function that will delete items (one at a time) from a dynamic array without leaving gaps in the array. You should assume that the items to be deleted are chosen at random, and try to do this in a gas efficient manner. For example imagine your array has 12 items and you need to delete the items at indexes 8, 2 and 7. The final array will then have items {0,1,3,4,5,6,9,10,11}
+
+#Example calls:
+
+```bash
+forge create src/DeleteItemArray.sol:DeleteItemArray --private-key YOUR-PRIVATE-KEY --constructor-args [0,1,2,3,4,5]
+```
+
+```bash
+cast send CONTRACT-ADDRESS "removeItemAtIndexWithOrder(uint index)" 1 --private-key YOUR-PRIVATE-KEY
+```
+
+```bash
+cast send CONTRACT-ADDRESS "consoleLogMyArray()" --private-key YOUR-PRIVATE-KEY
+```
+
+```bash
+cast send CONTRACT-ADDRESS "removeItemAtIndexWithoutOrder(uint index)" 2 --private-key YOUR-PRIVATE-KEY
+```
+
+```bash
+cast send CONTRACT-ADDRESS "consoleLogMyArray()" --private-key YOUR-PRIVATE-KEY
+```
+
 
 Foundry consists of:
 
@@ -43,12 +66,6 @@ $ forge snapshot
 
 ```shell
 $ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
 ```
 
 ### Cast
