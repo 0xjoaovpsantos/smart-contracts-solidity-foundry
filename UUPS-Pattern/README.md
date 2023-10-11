@@ -1,6 +1,30 @@
 ## Foundry
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+- First deploy your logic contract:
+
+```
+forge create src/MyContract.sol:MyContract --private-key YOUR-PRIVATE-KEY  
+```
+
+- Then deploy your proxy contract:
+
+```
+forge create src/Proxy.sol:Proxy --private-key YOUR-PRIVATE-KEY --constructor-args 0x2e147cba ADDRESS-LOGIC-CONTRACT
+
+```
+
+- Now you can manipulate thought proxy contract:
+
+```
+cast send 0xb19b36b1456E65E3A6D514D3F715f204BD59f431 "increment()" --private-key YOUR-PRIVATE-KEY  
+```
+
+- If you need update your logic contract:
+
+```
+cast send ADDRESS-PROXY-CONTRACT "updateCode(address)" NEW-ADDRESS-LOGIC-CONTRACT --private-key YOUR-PRIVATE-KEY
+ 
+```
 
 Foundry consists of:
 
