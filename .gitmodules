@@ -25,3 +25,6 @@
 [submodule "my-token/lib/openzeppelin-contracts"]
 	path = my-token/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "homework2-expert-solidity-bootcamp-delete-item-array/lib/forge-std"]
+	path = homework2-expert-solidity-bootcamp-delete-item-array/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
