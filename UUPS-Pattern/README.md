@@ -1,6 +1,8 @@
-## Foundry
+## Universal Upgradeable Proxy Standard (UUPS) - ERC-1822
 
-- First deploy your logic contract:
+Reference: https://eips.ethereum.org/EIPS/eip-1822
+
+- First, deploy your logic contract:
 
 ```
 forge create src/MyContract.sol:MyContract --private-key YOUR-PRIVATE-KEY  
@@ -25,6 +27,7 @@ cast send 0xb19b36b1456E65E3A6D514D3F715f204BD59f431 "increment()" --private-key
 cast send ADDRESS-PROXY-CONTRACT "updateCode(address)" NEW-ADDRESS-LOGIC-CONTRACT --private-key YOUR-PRIVATE-KEY
  
 ```
+<hr/>
 
 Foundry consists of:
 
