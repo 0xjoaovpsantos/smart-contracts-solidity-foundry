@@ -31,3 +31,6 @@
 [submodule "UUPS-Pattern/lib/forge-std"]
 	path = UUPS-Pattern/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "homework4-expert-solidity-bootcamp-sol2uml-tool/lib/forge-std"]
+	path = homework4-expert-solidity-bootcamp-sol2uml-tool/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
