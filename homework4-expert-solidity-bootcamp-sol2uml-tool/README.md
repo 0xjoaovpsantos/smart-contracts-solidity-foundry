@@ -1,4 +1,29 @@
-## Foundry
+## Homework 4 - Optimising Storage
+
+- Take this contract, use the sol2uml tool to find out how many storage slots it is using. By re ordering the variables, can you reduce the number of
+storage slots needed ?
+
+## Solution
+
+- You need a config solum2tool locally, a suggestion, you could install globally: https://github.com/naddison36/sol2uml
+- To generate the class diagram: 
+```
+sol2uml class src/Store.sol
+```
+- To generate the storage slot report: 
+```
+sol2uml storage src/Store.sol --contract Store
+```
+
+# Reports
+
+- Memory slot before the optomization:
+<img src="memory-slot-before-the-optimization.png">
+
+- Memory slot after the optomization:
+<img src="memory-slot-after-the-optimization.png">
+
+<hr/>
 
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
