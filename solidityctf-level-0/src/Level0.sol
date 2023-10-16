@@ -12,8 +12,10 @@ pragma solidity 0.8.17;
 */
 
 contract Level0 {
-
 	  function solution() external pure returns (uint8){
-        return 255;
+        assembly {
+            mstore(0, 255)
+            return (0, 32)
+        }
       }
 }
