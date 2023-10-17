@@ -43,3 +43,6 @@
 [submodule "solidityctf-level-2/lib/forge-std"]
 	path = solidityctf-level-2/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "solidityctf-level-3/lib/forge-std"]
+	path = solidityctf-level-3/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
