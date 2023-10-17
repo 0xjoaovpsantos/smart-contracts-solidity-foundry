@@ -22,13 +22,14 @@ contract Level2 {
             for(uint8 line2 = 0; line2 < 9; line2++){
                 if(sortedArray[line2] > sortedArray[line2 + 1]){
                     uint256 item = sortedArray[line2 + 1];
-                    sortedArray[line2 + 1] = sortedArray[line2];
-                    sortedArray[line2] = item;
+
+                    assembly {
+                        mstore(add(sortedArray, mul(0x20, add(line2, 1))), mload(add(sortedArray, mul(0x20, line2))))
+                        mstore(add(sortedArray, mul(0x20, line2)), item)
+                    }
                 }
             }
         }
-
-        return sortedArray;
    
     }
 
