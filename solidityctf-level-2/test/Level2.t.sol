@@ -29,5 +29,4 @@ contract Level2Test is Test {
         assertEq(response[8], expectedResponse[8]);
         assertEq(response[9], expectedResponse[9]);
     }
-   
 }
