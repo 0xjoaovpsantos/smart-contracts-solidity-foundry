@@ -17,10 +17,12 @@ contract Level3 {
              c := mload(add(packed, 0x23))
         }
 
-        if(bytesOfBool[0] == byteFalse){
-            b = false;
-        }else{
-            b = true;
+        assembly {
+            b := true 
+
+            if eq(bytesOfBool, byteFalse){
+                b := false
+            }
         }
 
     }
