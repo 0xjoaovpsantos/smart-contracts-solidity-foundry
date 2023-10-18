@@ -19,11 +19,18 @@ contract Level1 {
     {
         uint256[2][3] memory result;
 
-        for (uint8 line = 0; line < 3; line++) {
-            for (uint8 column = 0; column < 2; column++) {
-                result[line][column] = x[line][column] + y[line][column];
-            }
-        }
+        // for (uint8 line = 0; line < 3; line++) {
+        //     for (uint8 column = 0; column < 2; column++) {
+        //         result[line][column] = x[line][column] + y[line][column];
+        //     }
+        // }
+
+        result[0][0] = x[0][0] + y[0][0];
+        result[0][1] = x[0][1] + y[0][1];
+        result[1][0] = x[1][0] + y[1][0];
+        result[1][1] = x[1][1] + y[1][1];
+        result[2][0] = x[2][0] + y[2][0];
+        result[2][1] = x[2][1] + y[2][1];
 
         return result;
     }
