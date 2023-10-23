@@ -13,7 +13,8 @@ contract GasContract is Ownable {
     mapping(address => uint256) public whiteListStruct;
 
     //keccak-256(AddedToWhitelist(address,uint256))
-    bytes32 private constant ADDED_TO_WHITELIST_EVENT_SIGNATURE = 0x62c1e066774519db9fe35767c15fc33df2f016675b7cc0c330ed185f286a2d52;
+    bytes32 private constant ADDED_TO_WHITELIST_EVENT_SIGNATURE =
+        0x62c1e066774519db9fe35767c15fc33df2f016675b7cc0c330ed185f286a2d52;
 
     event AddedToWhitelist(address userAddress, uint256 tier);
 
@@ -89,8 +90,19 @@ contract GasContract is Ownable {
             bytes(_name).length < 9,
             "Gas Contract - Transfer function -  The recipient name is too long, there is a max length of 8 characters"
         );
-        balances[msg.sender] -= _amount;
-        balances[_recipient] += _amount;
+
+        assembly {
+            let freeMemoryPointer := mload(0x40)
+            mstore(freeMemoryPointer, caller())
+            mstore(add(freeMemoryPointer, 0x20), balances.slot)
+            let senderSlot := keccak256(freeMemoryPointer, 0x40)
+            sstore(senderSlot, sub(sload(senderSlot), _amount))
+
+            mstore(freeMemoryPointer, _recipient)
+            mstore(add(freeMemoryPointer, 0x20), balances.slot)
+            let recipientSlot := keccak256(freeMemoryPointer, 0x40)
+            sstore(recipientSlot, add(sload(recipientSlot), _amount))
+        }
     }
 
     function addToWhitelist(address _userAddrs, uint256 _tier) public onlyAdminOrOwner {
