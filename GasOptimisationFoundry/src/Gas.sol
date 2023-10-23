@@ -12,8 +12,8 @@ contract GasContract is Ownable {
 
     mapping(address => uint256) public whiteListStruct;
 
-    //keccak-256(AddedToWhitelist(address, uint256))
-    bytes32 private constant ADDED_TO_WHITELIST_EVENT_SIGNATURE = 0x14f7410ec186d7b26c493efe237cbf48a0b6e4c25764ce97312c94e1d4112e6b;
+    //keccak-256(AddedToWhitelist(address,uint256))
+    bytes32 private constant ADDED_TO_WHITELIST_EVENT_SIGNATURE = 0x62c1e066774519db9fe35767c15fc33df2f016675b7cc0c330ed185f286a2d52;
 
     event AddedToWhitelist(address userAddress, uint256 tier);
 
@@ -49,6 +49,7 @@ contract GasContract is Ownable {
         _;
     }
 
+    event supplyChanged(address indexed, uint256 indexed);
     event Transfer(address recipient, uint256 amount);
     event WhiteListTransfer(address indexed);
 
@@ -104,7 +105,7 @@ contract GasContract is Ownable {
         assembly {
             mstore(0x00, _userAddrs)
             mstore(0x20, _tier)
-            log1(0x00, 0x40, ADDED_TO_WHITELIST_EVENT_SIGNATURE)
+            log1(0x00, 64, ADDED_TO_WHITELIST_EVENT_SIGNATURE)
         }
 
         // emit AddedToWhitelist(_userAddrs, _tier);
