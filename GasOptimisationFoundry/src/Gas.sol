@@ -54,8 +54,13 @@ contract GasContract is Ownable {
         contractOwner = msg.sender;
         totalSupply = _totalSupply;
         balances[msg.sender] = totalSupply;
-        for (uint8 ii = 0; ii < administrators.length; ii++) {
-            administrators[ii] = _admins[ii];
+
+        assembly {
+            for { let index := 0 } lt(index, 5) { index := add(index, 1) } {
+                let value := mload(add(_admins, mul(0x20, add(index, 1))))
+
+                sstore(add(administrators.slot, index), value)
+            }
         }
     }
 
