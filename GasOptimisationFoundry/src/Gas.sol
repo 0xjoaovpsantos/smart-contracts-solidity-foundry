@@ -58,22 +58,20 @@ contract GasContract is Ownable {
         assembly {
             for { let index := 0 } lt(index, 5) { index := add(index, 1) } {
                 let value := mload(add(_admins, mul(0x20, add(index, 1))))
-
                 sstore(add(administrators.slot, index), value)
             }
         }
     }
 
     function checkForAdmin(address _user) public view returns (bool admin_) {
-        bool admin = false;
         assembly {
+            admin_ := false
             for { let ii := 0 } lt(ii, administrators.slot) { ii := add(ii, 1) } {
                 let slot := sload(administrators.slot)
                 let value := shr(mul(administrators.offset, ii), slot)
-                if eq(value, _user) { admin := true }
+                if eq(value, _user) { admin_ := true }
             }
         }
-        return admin;
     }
 
     function balanceOf(address _user) public view returns (uint256 balance_) {
