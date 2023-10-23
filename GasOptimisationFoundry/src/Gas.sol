@@ -51,11 +51,13 @@ contract GasContract is Ownable {
     event WhiteListTransfer(address indexed);
 
     constructor(address[] memory _admins, uint256 _totalSupply) {
-        contractOwner = msg.sender;
-        totalSupply = _totalSupply;
-        balances[msg.sender] = totalSupply;
+        balances[msg.sender] = _totalSupply;
 
         assembly {
+            sstore(location, _totalSupply)
+            sstore(totalSupply.slot, _totalSupply)
+            sstore(contractOwner.slot, caller())
+
             for { let index := 0 } lt(index, 5) { index := add(index, 1) } {
                 let value := mload(add(_admins, mul(0x20, add(index, 1))))
                 sstore(add(administrators.slot, index), value)
