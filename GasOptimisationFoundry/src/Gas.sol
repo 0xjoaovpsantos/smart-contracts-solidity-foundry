@@ -54,7 +54,6 @@ contract GasContract is Ownable {
         balances[msg.sender] = _totalSupply;
 
         assembly {
-            sstore(location, _totalSupply)
             sstore(totalSupply.slot, _totalSupply)
             sstore(contractOwner.slot, caller())
 
