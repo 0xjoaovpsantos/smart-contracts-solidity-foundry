@@ -12,6 +12,9 @@ contract GasContract is Ownable {
 
     mapping(address => uint256) public whiteListStruct;
 
+    //keccak-256(AddedToWhitelist(address, uint256))
+    bytes32 private constant ADDED_TO_WHITELIST_EVENT_SIGNATURE = 0x14f7410ec186d7b26c493efe237cbf48a0b6e4c25764ce97312c94e1d4112e6b;
+
     event AddedToWhitelist(address userAddress, uint256 tier);
 
     modifier onlyAdminOrOwner() {
@@ -46,7 +49,6 @@ contract GasContract is Ownable {
         _;
     }
 
-    event supplyChanged(address indexed, uint256 indexed);
     event Transfer(address recipient, uint256 amount);
     event WhiteListTransfer(address indexed);
 
@@ -99,7 +101,13 @@ contract GasContract is Ownable {
             whitelist[_userAddrs] = _tier;
         }
 
-        emit AddedToWhitelist(_userAddrs, _tier);
+        assembly {
+            mstore(0x00, _userAddrs)
+            mstore(0x20, _tier)
+            log1(0x00, 0x40, ADDED_TO_WHITELIST_EVENT_SIGNATURE)
+        }
+
+        // emit AddedToWhitelist(_userAddrs, _tier);
     }
 
     function whiteTransfer(address _recipient, uint256 _amount) public checkIfWhiteListed(msg.sender) {
