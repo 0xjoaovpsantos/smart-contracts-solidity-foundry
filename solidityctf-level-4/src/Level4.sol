@@ -9,13 +9,17 @@ contract Level4 {
         for(uint256 index = 0; index <= number; index++){
 
             if(index == 0){
-                result = 1;
+                assembly {
+                    result := 1
+                }
             } else {
-                result = 2 * result;            
+                assembly {
+                    result := add(result, result)
+                }          
             }
 
-            if(result + result > number){
-                return result;
+            if(result > number) {
+                return result / 2;
             }
         }
     }
