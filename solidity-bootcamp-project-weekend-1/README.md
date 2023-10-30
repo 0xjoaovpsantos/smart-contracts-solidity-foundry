@@ -1,6 +1,6 @@
 ## Foundry
 
-# Relatory
+# Report
 
 - Contract deploy informations:
   - Deployer: 0xcAB40A0022B848D7a2D2F40D05C76da8F90260F8
@@ -73,6 +73,8 @@ transactionIndex        0
 type                    2
 
 ```
+
+<hr />
 
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
