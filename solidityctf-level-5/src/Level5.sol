@@ -7,20 +7,12 @@ contract Level5 {
     
     function solution(int256 a, int256 b) external pure returns (int256) {
 
-        // int256 sum;
+        if(a % 2 == 1 || b % 2 == 1){
+            return (a / 2) + (b / 2) + 1;
+        }else{
+            return (a / 2) + (b / 2);
+        }
 
-        // assembly {
-        //     sum := add(a, b)
-        // }
-
-        // int256 divisao = sum / 2;
-        // int256 modulo = sum % 2;
-
-        // assembly {
-        //     let result := add(divisao, modulo)
-
-        //     mstore(0x0, result)
-        //     return (0x0, 32)
-        // }
+   
     }
 }
